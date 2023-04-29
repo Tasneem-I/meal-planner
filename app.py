@@ -42,8 +42,15 @@ api_key = 'b96022655ebe44e0a332169e33124d1f'
 
 #routes
 @app.route('/')
-def home():
-    return render_template("home.html")
+def fact_json():
+    url = "https://api.spoonacular.com/food/trivia/random"
+    params = {"apiKey": api_key}
+    response = requests.get(url, params=params)
+    fact = json.loads(response.text)["text"]
+    return render_template("home.html", fact=fact)
+
+
+
 
 
 @app.route('/recipe_names', methods=["GET", "POST"])
@@ -68,7 +75,7 @@ def recipe_names():
             card = final["url"]
             recipe_cards.append(card)
         
-        return redirect(url_for("recipe_names",cards = recipe_cards))
+        return render_template("recipes.html",cards = recipe_cards)
     else:
         return render_template("recipes.html")
     
