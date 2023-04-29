@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %} Home {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+{% include "nav2.html" %}
+
+<div class="container">
+    <form method="POST">
+        <div class="form-group">
+            <h1 style="margin-top: 5% ; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><center>Search</center></h1>
+            <div class="row">
+                <div class="col-4">
+                    <label for="calories" style="font-size: 30px; margin-top: 5%;">Target calories(per day)</label>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" id="calories" name="calories" style="margin-top: 4%;margin-left: 0px;width: 650px; margin-bottom:10%;" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label for="excIng" style="font-size: 30px; margin-top: 5%;">Ingredients to exclude</label>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" id="excIng" name="excIng" style="margin-top: 4%;margin-left: 0px;width: 650px; margin-bottom:10%;" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label for="diet" style="font-size: 30px; margin-top: 5%;">Diet</label>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" id="diet" name="diet" style="margin-top: 4%;margin-left: 0px;width: 650px; margin-bottom:10%;" required>
+                </div>
+            </div>
+            <button type="submit" style="margin-left: 95%; height: 50px; width: 100px;">Search</button>
+        </div>
+    </form>
+ </div>
+
+{% if meals %} 
+
+{% endif %}
+
+</body>

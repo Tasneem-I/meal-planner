@@ -152,16 +152,40 @@ def login():
 def mealplan():
     if request.method == "POST":
         gen = 'https://api.spoonacular.com/mealplanner/generate'
+        key = 'd2a23524be1e40038741925c6a3d3e0c'
         user = session.get('user')
-        params ={"apiKey": api_key, "timeFrame": 'week'}
+        diet = request.form.get("diet")
+        exc = request.form.get("excIng")
+        cal = request.form.get("calories")
+        params ={"apiKey": key, "timeFrame": 'week', 'diet' : diet, "exclude": exc, "targetCalories": cal}
         ans = requests.get(gen, params=params)
         plan = json.loads(ans.text)
+        meal_ids =[]
+        meal_servings =[]
+        meal_prep =[]
         meal_names = []
+        source = []
         for days in mealplan["week"]:
             for i in range(0,3):
+                id =mealplan["week"][days]["meals"][i]["id"]
                 food =mealplan["week"][days]["meals"][i]["title"]
+                serve =mealplan["week"][days]["meals"][i]["servings"]
+                time =mealplan["week"][days]["meals"][i]["readyInMinutes"]
+                link =mealplan["week"][days]["meals"][i]["sourceUrl"]
+                meal_ids.append(id)
+                meal_prep.append(time)
+                meal_servings.append(serve)
                 meal_names.append(food)
-        return redirect(url_for("mealplan", meals = meal_names))
+                source.append(link)
+        images=[]
+        for id in meal_ids:
+            url = "https://api.spoonacular.com/recipes/" + str(id)+ "/information"
+            get_1 = requests.get(url)
+            get = json.loads(get_1)
+            image = get["image"]
+            images.append(image)
+        
+        return render_template("mealplan.html", meals = meal_names, times = meal_prep, servings=meal_servings, images = images, links = source)
     else:
         return render_template("mealplan.html")
 
