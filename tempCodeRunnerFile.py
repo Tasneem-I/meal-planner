@@ -1,39 +1,3 @@
-from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin, login_user, logout_user
-import requests
-import json
-
-app = Flask(__name__)
-app.config["SECRET_KEY"] ="AtigyiUS9812892019IKOSNJSGDU"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
-
-#db = SQLAlchemy()
-#login_manager = LoginManager()
-#login_manager.init_app(app)
-
-#database
-#class Users(UserMixin, db.Model):
-#   id = db.Column(db.Integer, primary_key = True)
-
-
-
-#db.init_app(app)
-#with app.app_context:
-#    db.create_all()
-
-#@login_manager.user_loader
-#def user_load(user_id):
-#    return Users.query.get(user_id)
-
-api_key = 'b96022655ebe44e0a332169e33124d1f'
-
-#routes
-@app.route('/')
-def home():
-    return render_template("home.html")
-
-
 @app.route('/recipe_names', methods=["GET", "POST"])
 def recipe_names():
     if request.method == "POST":
@@ -59,11 +23,3 @@ def recipe_names():
         return redirect(url_for("recipe_names",cards = recipe_cards))
     else:
         return render_template("recipes.html")
-
-
-
-
-#main driver
-
-if __name__ == "__main__":
-    app.run(debug="True")
