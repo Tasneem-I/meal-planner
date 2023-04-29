@@ -43,9 +43,29 @@
  </div>
 
 {% if cards %} 
-   {% for image in cards %} 
-        <img src={{image}}>
-    {% endfor %}
+    <div class="row">
+        <div class="col-4">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src={{images[0]}} width="200px" height="300px"/>
+            <div class="card-body">
+                <div class="card-title"><h3 style="color: #3F3B3B; font-family: sans-serif;"><center> {{titles[i]}} </center></h3></div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src={{images[1]}} width="200px" height="300px"/>
+            <div class="card-body">
+                <div class="card-title"><h3 style="color: #3F3B3B; font-family: sans-serif;"><center> {{titles[i]}} </center></h3></div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src={{images[2]}} width="200px" height="300px"/>
+            <div class="card-body">
+                <div class="card-title"><h3 style="color: #3F3B3B; font-family: sans-serif;"><center> {{titles[i]}} </center></h3></div>
+            </div>
+        </div>
+    </div>
 {% endif %}
 </body>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>

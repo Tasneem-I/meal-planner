@@ -60,7 +60,7 @@ def recipe_names():
         complex = "https://api.spoonacular.com/recipes/complexSearch"
         params ={'apiKey': api_key,
                  'query': name,
-                 'number' : 1} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                 'number' : 3} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         response = requests.get(complex, params=params)
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
@@ -75,10 +75,40 @@ def recipe_names():
             card = final["url"]
             recipe_cards.append(card)
         
-        return render_template("recipes.html",cards = recipe_cards)
+        return render_template("recipes_by_name.html",cards = recipe_cards, titles=titles)
     else:
-        return render_template("recipes.html")
+        return render_template("recipes_by_name.html")
     
+
+@app.route('/recipe_search', methods=["GET", "POST"])
+def recipe_search():
+    if request.method == "POST":
+        Incingredients = request.form.get("ingredients_inc")
+        Excingredients = request.form.get("ingredients_exc")
+        diet = request.form.get("diet")
+        complex = "https://api.spoonacular.com/recipes/complexSearch"
+        params ={'apiKey': api_key,
+                 'diet': diet,
+                 'includeIngredients' : Incingredients,
+                 'excludeIngredients' : Excingredients,
+                 'number' : 3} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        response = requests.get(complex, params=params)
+        val = json.loads(response.text)
+        meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
+        titles = [val["results"][i]["title"] for i in range(len(val["results"]))]
+        images = [val["results"][i]["image"] for i in range(len(val["results"]))]
+        recipe_cards = []
+        for i in meal_ids:
+            place = "https://api.spoonacular.com/recipes/"+str(i)+"/card"
+            param = {'apiKey' : api_key}
+            results = requests.get(place, params=param)
+            final = json.loads(results.text)
+            card = final["url"]
+            recipe_cards.append(card)
+        
+        return render_template("recipes_search.html",cards = recipe_cards, titles=titles)
+    else:
+        return render_template("recipes_search.html")
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
