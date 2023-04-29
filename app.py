@@ -8,23 +8,23 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] ="AtigyiUS9812892019IKOSNJSGDU"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
 
-db = SQLAlchemy()
-login_manager = LoginManager()
-login_manager.init_app(app)
+#db = SQLAlchemy()
+#login_manager = LoginManager()
+#login_manager.init_app(app)
 
 #database
-class Users(UserMixin, db.Model):
-   id = db.Column(db.Integer, primary_key = True)
+#class Users(UserMixin, db.Model):
+#   id = db.Column(db.Integer, primary_key = True)
 
 
 
-db.init_app(app)
-with app.app_context:
-    db.create_all()
+#db.init_app(app)
+#with app.app_context:
+#    db.create_all()
 
-@login_manager.user_loader
-def user_load(user_id):
-    return Users.query.get(user_id)
+#@login_manager.user_loader
+#def user_load(user_id):
+#    return Users.query.get(user_id)
 
 api_key = 'd2a23524be1e40038741925c6a3d3e0c'
 
