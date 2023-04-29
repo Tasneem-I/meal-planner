@@ -18,6 +18,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
 
 
 
+
 #db.init_app(app)
 #with app.app_context:
 #    db.create_all()
@@ -59,6 +60,14 @@ def recipe_names():
         return redirect(url_for("recipe_names",cards = recipe_cards))
     else:
         return render_template("recipes.html")
+    
+
+
+@app.route("/mealplan", methods=["GET", "POST"])
+def mealplan():
+    if request.method == "POST":
+        gen = 'https://api.spoonacular.com/mealplanner/generate'
+
 
 
 
