@@ -7,40 +7,62 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     
 </head>
-
+<body style="background-color: #FEF9EB;"></body>
 {% include 'nav.html' %}
 
 <body>
-    <div class="row" style="margin-top: 50px">
+    <div class="row" style="margin-top: 100px">
         <div class="col-4">
             <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDFkZGQzYzUyZTJjNDQxZGYzNzhhN2ZiM2E2YjZhZDc2OTUwNDBhMCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/TWtHkfoWnci582xwPD/giphy.gif" width="450" height="350">
         </div>
         <div class="col-8">
-            <h2 style="margin-right: 200px;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ; font-weight: 550; "><center>What Is Meal Planning?</center></h2>
+            <h2 style="margin-right: 200px;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ; font-weight: 600;text-decoration:underline; "><center>What Is Meal Planning?</center></h2>
             <p style="font-family: Georgia, 'Times New Roman', Times, serif"><center  style="margin-left: 5%;">Meal planning is like a symphony for your taste buds and your wallet! It's a harmonious process that allows you to create a beautiful melody of delicious and healthy meals, all while saving time and money. With a little creativity and innovation, meal planning can transform your kitchen into a culinary playground, where you experiment with new ingredients, flavors, and cuisines. It's a chance to indulge in your passion for cooking, while also taking care of your health and wellbeing.</center></p>
         </div>
     </div>
-    <div class="row" style="margin-top: 100px">
+    <div class="row" style="margin-top: 110px">
         <div class="col-8">
-            <h2 style="margin-left: 30px;font-family:'Courier New', Courier, monospace;font-weight: 550;"><center>Benfiits Of Meal Planning</center></h2>
+            <h2 style="margin-left: 30px;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-weight: 600;text-decoration: underline;"><center>Benfits Of Meal Planning</center></h2>
             <p style="font-family:Georgia, 'Times New Roman', Times, serif;"><center>Meal planning is a game-changer for anyone who wants to live a healthier and more fulfilling life. By adopting this simple practice, individuals can transform their eating habits, save time and money, and reduce food waste. With meal planning, individuals can enjoy a variety of delicious and nutritious meals that support their health and wellbeing. They can also experiment with new recipes and cuisines, making mealtime more exciting and enjoyable. Ultimately, meal planning is a beautiful and effective way to take control of your diet, simplify your life, and achieve a sense of balance and harmony. </center></p>
         </div>
         <div class="col-4" >
             <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzZkYWUzMjZjYWY1YmQwMDRiN2I3NjIwNmYwZmQ1MTc4NDJjYjAwMiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/RMScOnzdDdbdaAQ81Z/giphy.gif"  width="400" height="400">
         </div>
-    <div class="row" style="margin-top: 50px">
+    <div class="row" style="margin-top: 110px">
         <div class="col-4">
             <img src="https://media1.giphy.com/media/7J26CI27eJf0B3D8PK/giphy.gif?cid=ecf05e47ikdkzmkas07o3b6iu5pyijdsdsgh1ukzxnprllmv&ep=v1_gifs_related&rid=giphy.gif&ct=g"  width="400" height="400">
         </div>
         <div class="col-8">
-            <h2 style="margin-right: 200px;font-family:'Courier New', Courier, monospace;font-weight: 550;"><center>What We Offer</center></h2>
+            <h2 style="margin-right: 200px;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-weight: 600;text-decoration:underline;"><center>What We Offer</center></h2>
             <p style="font-family: Georgia, 'Times New Roman', Times, serif;"><center  style="margin-left: 5%;">At [website name], we offer a comprehensive meal planning service that takes the guesswork out of healthy eating. Our meal plans are tailored to your individual needs and preferences, and include a wide variety of delicious and nutritious recipes. Our plans are designed to be easy to follow preparation instructions, making it simple to enjoy healthy, home-cooked meals every day. With [website name], you can say goodbye to the hassle of meal planning and hello to a healthier, happier you.</center></p>
         </div>
     </div>
-    <h1 style="margin-top: 5%;font-family:serif;"><center>WHY CHOOSE US</center></h1>
-        <hr class="hr"/>
-        <div id="fact-container">{{ fact }}</div>
 
+    <h1 style="margin-top: 5%;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-weight: 600;text-decoration: underline; text-decoration-style:double;"><center>DID YOU KNOW?</center></h1>
+        <hr class="hr"/>
+    <style>.ylpastel-bg {background-color: #FCEDC5} .border-brown {border: 2px solid #392905; border-radius: 50px;}</style>
+    <div id="fact-container">
+        <div class="container mt-4">
+            <div class="card ylpastel-bg text-black border-brown ">
+              <div class="card-body">
+                <p class="card-text" id="trivia"><center>{{fact}}</center></p>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="row" style="margin-top: 100px">
+        <div class="col-4">
+            <img src="/image/home.jpg" class="responsive-fluid" style="max-width: 500px;margin-left: 5%;">
+        </div>
+        <div class="col-8">
+            <p style="font-family: Georgia, 'Times New Roman', Times, serif;margin-bottom: 10%;"><center  style="margin-left: 5%;">Meal planning is a personal and important task, as it involves selecting the right foods and balancing nutrients for optimal health.By limiting meal plan generation to registered users, we ensure that each plan is tailored to their unique needs, resulting in a better experience and improved health outcomes .So get started on creating your healthy meal plan specially crafted for your needs by singing up or logging in.We are excited to get you started on your health journey.</center></p>
+            <div class="d-grid gap-20 d-md-block " style="margin-top: 7%;">
+                <center><button class="btn btn-decor btn-md" type="button"><a href='/signup' class='nav-link'>Sign Up</a></button>
+                <button class="btn btn-decor btn" type="button"><a href='/login' class='nav-link'>Log In</button></a></center>
+            </div>
+            <style>.btn-decor {background-color: #f7efde;border: 1px solid #392905;border-radius: 50px;margin-right: 10px;} </style>
+        </div>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </html>
