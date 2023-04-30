@@ -65,7 +65,6 @@ def recipe_names():
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
         titles = [val["results"][i]["title"] for i in range(len(val["results"]))]
-        images = [val["results"][i]["image"] for i in range(len(val["results"]))]
         recipe_cards = []
         for i in meal_ids:
             place = "https://api.spoonacular.com/recipes/"+str(i)+"/card"
@@ -96,7 +95,6 @@ def recipe_search():
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
         titles = [val["results"][i]["title"] for i in range(len(val["results"]))]
-        images = [val["results"][i]["image"] for i in range(len(val["results"]))]
         recipe_cards = []
         for i in meal_ids:
             place = "https://api.spoonacular.com/recipes/"+str(i)+"/card"
@@ -106,7 +104,7 @@ def recipe_search():
             card = final["url"]
             recipe_cards.append(card)
         
-        return render_template("recipes_search.html",cards = recipe_cards, titles=titles)
+        return render_template("recipes_search.html",images = recipe_cards, titles=titles)
     else:
         return render_template("recipes_search.html")
 
