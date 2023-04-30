@@ -38,7 +38,7 @@ with app.app_context():
 def user_load(user_id):
    return Users.query.get(user_id)
 
-api_key = 'd2a23524be1e40038741925c6a3d3e0c'
+api_key = 'd993897c3b545f74bd2f0bd319b13c15312d3b7f'
 
 #routes
 @app.route('/')
