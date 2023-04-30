@@ -46,8 +46,9 @@ def fact_json():
     url = "https://api.spoonacular.com/food/trivia/random"
     params = {"apiKey": api_key}
     response = requests.get(url, params=params)
-    fact = json.loads(response.text)["text"]
-    return render_template("home.html", fact=fact)
+    fact = json.loads(response.text)
+    facts = fact["text"]
+    return render_template("home.html", fact=facts)
 
 
 
