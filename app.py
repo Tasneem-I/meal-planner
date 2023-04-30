@@ -53,7 +53,9 @@ def fact_json():
 
 
 
-
+@app.route('/diet')
+def diet():
+    return render_template("diet.html")
 @app.route('/recipe_names', methods=["GET", "POST"])
 def recipe_names():
     if request.method == "POST":
@@ -150,37 +152,29 @@ def login():
 @app.route("/mealplan", methods=["GET", "POST"])
 def mealplan():
     if request.method == "POST":
-        gen = 'https://api.spoonacular.com/mealplanner/generate'
-        key =  'b5b216d0722440249c40ae68cb29a207'
-        user = session.get('user')
+        Incingredients = request.form.get("ingredients_inc")
+        Excingredients = request.form.get("ingredients_exc")
         diet = request.form.get("diet")
-        exc = request.form.get("excIng")
-        cal = request.form.get("calories")
-        params ={"apiKey": key, "timeFrame": 'week', 'diet' : diet, "exclude": exc, "targetCalories": cal}
-        ans = requests.get(gen, params=params)
-        plan = json.loads(ans.text)
-        meal_ids =[]
-        meal_servings =[]
-        meal_prep =[]
-        meal_names = []
-        source = []
-        for days in plan["week"]:
-            for i in range(0,3):
-                id =plan["week"][days]["meals"][i]["id"]
-                food =plan["week"][days]["meals"][i]["title"]
-                link =plan["week"][days]["meals"][i]["sourceUrl"]
-                meal_ids.append(id)
-                meal_names.append(food)
-                source.append(link)
-        cards=[]
-        for id in meal_ids:
-            url = "https://api.spoonacular.com/recipes/" + str(id)+ "/card"
-            get_1 = requests.get(url)
-            get = json.loads(get_1)
-            image = get["image"]
-            cards.append(image)
+        complex = "https://api.spoonacular.com/recipes/complexSearch"
+        params ={'apiKey': api_key,
+                 'diet': diet,
+                 'includeIngredients' : Incingredients,
+                 'excludeIngredients' : Excingredients,
+                 'number' : 21} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        response = requests.get(complex, params=params)
+        val = json.loads(response.text)
+        meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
+        meal_names = [val["results"][i]["title"] for i in range(len(val["results"]))]
+        cards = []
+        for i in meal_ids:
+            place = "https://api.spoonacular.com/recipes/"+str(i)+"/card"
+            param = {'apiKey' : api_key}
+            results = requests.get(place, params=param)
+            final = json.loads(results.text)
+            card = final["url"]
+            cards.append(card)
         
-        return render_template("mealplan.html", meals = meal_names,images= cards, links = source)
+        return render_template("mealplan.html", meals = meal_names,images= cards)
     else:
         return render_template("mealplan.html")
 
