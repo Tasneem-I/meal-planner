@@ -60,7 +60,7 @@ def recipe_names():
         complex = "https://api.spoonacular.com/recipes/complexSearch"
         params ={'apiKey': api_key,
                  'query': name,
-                 'number' : 3} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                 'number' : 4} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         response = requests.get(complex, params=params)
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
@@ -90,7 +90,7 @@ def recipe_search():
                  'diet': diet,
                  'includeIngredients' : Incingredients,
                  'excludeIngredients' : Excingredients,
-                 'number' : 3} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                 'number' : 4} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         response = requests.get(complex, params=params)
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
