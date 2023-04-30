@@ -38,7 +38,7 @@ with app.app_context():
 def user_load(user_id):
    return Users.query.get(user_id)
 
-api_key = 'b96022655ebe44e0a332169e33124d1f'
+api_key = 'd2a23524be1e40038741925c6a3d3e0c'
 
 #routes
 @app.route('/')
@@ -65,7 +65,6 @@ def recipe_names():
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
         titles = [val["results"][i]["title"] for i in range(len(val["results"]))]
-        images = [val["results"][i]["image"] for i in range(len(val["results"]))]
         recipe_cards = []
         for i in meal_ids:
             place = "https://api.spoonacular.com/recipes/"+str(i)+"/card"
@@ -96,7 +95,6 @@ def recipe_search():
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
         titles = [val["results"][i]["title"] for i in range(len(val["results"]))]
-        images = [val["results"][i]["image"] for i in range(len(val["results"]))]
         recipe_cards = []
         for i in meal_ids:
             place = "https://api.spoonacular.com/recipes/"+str(i)+"/card"
@@ -106,7 +104,7 @@ def recipe_search():
             card = final["url"]
             recipe_cards.append(card)
         
-        return render_template("recipes_search.html",cards = recipe_cards, titles=titles)
+        return render_template("recipes_search.html",cards= recipe_cards, titles=titles)
     else:
         return render_template("recipes_search.html")
 
@@ -169,23 +167,19 @@ def mealplan():
             for i in range(0,3):
                 id =mealplan["week"][days]["meals"][i]["id"]
                 food =mealplan["week"][days]["meals"][i]["title"]
-                serve =mealplan["week"][days]["meals"][i]["servings"]
-                time =mealplan["week"][days]["meals"][i]["readyInMinutes"]
                 link =mealplan["week"][days]["meals"][i]["sourceUrl"]
                 meal_ids.append(id)
-                meal_prep.append(time)
-                meal_servings.append(serve)
                 meal_names.append(food)
                 source.append(link)
-        images=[]
+        cards=[]
         for id in meal_ids:
-            url = "https://api.spoonacular.com/recipes/" + str(id)+ "/information"
+            url = "https://api.spoonacular.com/recipes/" + str(id)+ "/card"
             get_1 = requests.get(url)
             get = json.loads(get_1)
             image = get["image"]
-            images.append(image)
+            cards.append(image)
         
-        return render_template("mealplan.html", meals = meal_names, times = meal_prep, servings=meal_servings, images = images, links = source)
+        return render_template("mealplan.html", meals = meal_names,images= cards, links = source)
     else:
         return render_template("mealplan.html")
 
