@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg bg-light px-4 mb-4 shadow-sm">
+<style>.navbg-navbar {background-color: #FCF2DB}</style>
+<nav class="navbar navbar-expand-lg navbg-navbar px-4 mb-4 shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Meal Planner</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target = '#Menu' >
@@ -8,7 +9,7 @@
             <ul class="navbar-nav" style="white-space: nowrap; margin-left: auto;">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Recipe
+                      Reciepe
                     </a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item active" href="/recipe_names">Search By Name</a></li>
@@ -16,8 +17,11 @@
                     </ul>
                 </li>
                 <li class="nav-item" style="margin-right:8%;"><a class='nav-link' href='/about'>Diets</a></li>
-                <li class="nav-item" style="margin-left: -1%;"><button type="button"><a href='/signup' class='nav-link'>Sign up</a></button></li>
-                <li class="nav-item" style="margin-left: -1%;"><button type="button"><a href='/login' class='nav-link'> Log In</a></button></li>
+                <style>.nav-item button {background-color: #f7efde;border: 1px solid #392905;border-radius: 50px;margin-right: 10px;} </style>
+                <li class="nav-item" style="margin-left: -1%;;">
+                    <button type="button"><a href='/signup' class='nav-link'>Sign up</a></button>
+                    <button type="button"><a href='/login' class='nav-link'> Log In</a></button>
+                </li>
             </ul>
         </div>
     </div>
