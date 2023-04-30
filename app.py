@@ -60,20 +60,20 @@ def recipe_names():
         complex = "https://api.spoonacular.com/recipes/complexSearch"
         params ={'apiKey': api_key,
                  'query': name,
-                 'number' : 4} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                 'number' : 3} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         response = requests.get(complex, params=params)
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
+        images = [val["results"][i]["image"] for i in range(len(val["results"]))]
         titles = [val["results"][i]["title"] for i in range(len(val["results"]))]
         recipe_cards = []
         for i in meal_ids:
             place = "https://api.spoonacular.com/recipes/"+str(i)+"/card"
-            param = {'apiKey' : api_key}
-            results = requests.get(place, params=param)
+            parameter = {'apiKey' : api_key}
+            results = requests.get(place, params=parameter)
             final = json.loads(results.text)
             card = final["url"]
-            recipe_cards.append(card)
-        
+            recipe_cards.append(card)  
         return render_template("recipes_by_name.html",cards = recipe_cards, titles=titles)
     else:
         return render_template("recipes_by_name.html")
@@ -90,7 +90,7 @@ def recipe_search():
                  'diet': diet,
                  'includeIngredients' : Incingredients,
                  'excludeIngredients' : Excingredients,
-                 'number' : 4} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                 'number' : 3} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         response = requests.get(complex, params=params)
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
