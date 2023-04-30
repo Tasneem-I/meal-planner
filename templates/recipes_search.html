@@ -34,7 +34,7 @@
                     <label for="Incingredients" style="font-size: 30px; margin-top: 5%;">Ingredients to include</label>
                 </div>
                 <div class="col-6">
-                    <input type="text" class="form-control" id="Incingredients" name="Incingredients" style="margin-top: 4%;margin-left: 0px;width: 650px; margin-bottom:10%;" required>
+                    <input type="text" class="form-control" id="Incingredients" name="Incingredients" style="margin-top: 4%;margin-left: 0px;width: 650px; margin-bottom:10%;" >
                 </div>
             </div>
             <div class="row">
@@ -42,7 +42,7 @@
                     <label for="Excingredients" style="font-size: 30px; margin-top: 5%;">Ingredients to exclude</label>
                 </div>
                 <div class="col-6">
-                    <input type="text" class="form-control" id="Excingredients" name="Excingredients" style="margin-top: 4%;margin-left: 0px;width: 650px; margin-bottom:10%;" required>
+                    <input type="text" class="form-control" id="Excingredients" name="Excingredients" style="margin-top: 4%;margin-left: 0px;width: 650px; margin-bottom:10%;" >
                 </div>
             </div>
             <div class="row">
@@ -50,7 +50,7 @@
                     <label for="diet" style="font-size: 30px; margin-top: 5%;">Diet</label>
                 </div>
                 <div class="col-6">
-                    <input type="text" class="form-control" id="diet" name="diet" style="margin-top: 4%;margin-left: 0px;width: 650px; margin-bottom:10%;" required>
+                    <input type="text" class="form-control" id="diet" name="diet" style="margin-top: 4%;margin-left: 0px;width: 650px; margin-bottom:10%;" >
                 </div>
             </div>
             <button type="submit" style="margin-left: 95%; height: 50px; width: 100px;">Search</button>
@@ -60,25 +60,38 @@
 
 {% if cards %} 
     <div class="row">
-        <div class="col-4">
+        <div class="col-6">
             <div class="card shadow-sm">
-                <img class="card-img-top" src={{images[0]}} width="200px" height="300px"/>
-            <div class="card-body">
-                <div class="card-title"><h3 style="color: #3F3B3B; font-family: sans-serif;"><center> {{titles[i]}} </center></h3></div>
+                <img class="card-img-top" src={{cards[0]}} width="500px" height="600px"/>
+                <div class="card-body">
+                <div class="card-title"><h3 style="color: #3F3B3B; font-family: sans-serif;"><center> {{titles[0]}} </center></h3></div>
+                </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-6">
             <div class="card shadow-sm">
-                <img class="card-img-top" src={{images[1]}} width="200px" height="300px"/>
-            <div class="card-body">
-                <div class="card-title"><h3 style="color: #3F3B3B; font-family: sans-serif;"><center> {{titles[i]}} </center></h3></div>
+                <img class="card-img-top" src={{cards[1]}} width="500px" height="600px"/>
+                <div class="card-body">
+                <div class="card-title"><h3 style="color: #3F3B3B; font-family: sans-serif;"><center> {{titles[1]}} </center></h3></div>
+                </div>
             </div>
         </div>
-        <div class="col-4">
+    </div>
+    <div classs="row">
+        <div class="col-6">
             <div class="card shadow-sm">
-                <img class="card-img-top" src={{images[2]}} width="200px" height="300px"/>
-            <div class="card-body">
-                <div class="card-title"><h3 style="color: #3F3B3B; font-family: sans-serif;"><center> {{titles[i]}} </center></h3></div>
+                <img class="card-img-top" src={{cards[2]}} width="500px" height="600px"/>
+                <div class="card-body">
+                <div class="card-title"><h3 style="color: #3F3B3B; font-family: sans-serif;"><center> {{titles[2]}} </center></h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src={{cards[3]}} width="500px" height="600px"/>
+                <div class="card-body">
+                <div class="card-title"><h3 style="color: #3F3B3B; font-family: sans-serif;"><center> {{titles[3]}} </center></h3></div>
+                </div>
             </div>
         </div>
     </div>
