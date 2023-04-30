@@ -60,20 +60,20 @@ def recipe_names():
         complex = "https://api.spoonacular.com/recipes/complexSearch"
         params ={'apiKey': api_key,
                  'query': name,
-                 'number' : 4} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                 'number' : 3} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         response = requests.get(complex, params=params)
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
+        images = [val["results"][i]["image"] for i in range(len(val["results"]))]
         titles = [val["results"][i]["title"] for i in range(len(val["results"]))]
         recipe_cards = []
         for i in meal_ids:
             place = "https://api.spoonacular.com/recipes/"+str(i)+"/card"
-            param = {'apiKey' : api_key}
-            results = requests.get(place, params=param)
+            parameter = {'apiKey' : api_key}
+            results = requests.get(place, params=parameter)
             final = json.loads(results.text)
             card = final["url"]
-            recipe_cards.append(card)
-        
+            recipe_cards.append(card)  
         return render_template("recipes_by_name.html",cards = recipe_cards, titles=titles)
     else:
         return render_template("recipes_by_name.html")
@@ -90,7 +90,7 @@ def recipe_search():
                  'diet': diet,
                  'includeIngredients' : Incingredients,
                  'excludeIngredients' : Excingredients,
-                 'number' : 4} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                 'number' : 3} #REQUIRES CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         response = requests.get(complex, params=params)
         val = json.loads(response.text)
         meal_ids = [val["results"][i]["id"] for i in range(len(val["results"]))]
@@ -150,7 +150,7 @@ def login():
 def mealplan():
     if request.method == "POST":
         gen = 'https://api.spoonacular.com/mealplanner/generate'
-        key = 'd2a23524be1e40038741925c6a3d3e0c'
+        key =  'd993897c3b545f74bd2f0bd319b13c15312d3b7f'
         user = session.get('user')
         diet = request.form.get("diet")
         exc = request.form.get("excIng")
@@ -163,11 +163,11 @@ def mealplan():
         meal_prep =[]
         meal_names = []
         source = []
-        for days in mealplan["week"]:
+        for days in plan["week"]:
             for i in range(0,3):
-                id =mealplan["week"][days]["meals"][i]["id"]
-                food =mealplan["week"][days]["meals"][i]["title"]
-                link =mealplan["week"][days]["meals"][i]["sourceUrl"]
+                id =plan["week"][days]["meals"][i]["id"]
+                food =plan["week"][days]["meals"][i]["title"]
+                link =plan["week"][days]["meals"][i]["sourceUrl"]
                 meal_ids.append(id)
                 meal_names.append(food)
                 source.append(link)
