@@ -38,7 +38,7 @@ with app.app_context():
 def user_load(user_id):
    return Users.query.get(user_id)
 
-api_key = 'd993897c3b545f74bd2f0bd319b13c15312d3b7f'
+api_key = 'b5b216d0722440249c40ae68cb29a207'
 
 #routes
 @app.route('/')
@@ -151,7 +151,7 @@ def login():
 def mealplan():
     if request.method == "POST":
         gen = 'https://api.spoonacular.com/mealplanner/generate'
-        key =  'd993897c3b545f74bd2f0bd319b13c15312d3b7f'
+        key =  'b5b216d0722440249c40ae68cb29a207'
         user = session.get('user')
         diet = request.form.get("diet")
         exc = request.form.get("excIng")
