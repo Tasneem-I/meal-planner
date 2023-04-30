@@ -150,7 +150,7 @@ def login():
 def mealplan():
     if request.method == "POST":
         gen = 'https://api.spoonacular.com/mealplanner/generate'
-        key = 'd2a23524be1e40038741925c6a3d3e0c'
+        key =  'd993897c3b545f74bd2f0bd319b13c15312d3b7f'
         user = session.get('user')
         diet = request.form.get("diet")
         exc = request.form.get("excIng")
@@ -163,11 +163,11 @@ def mealplan():
         meal_prep =[]
         meal_names = []
         source = []
-        for days in mealplan["week"]:
+        for days in plan["week"]:
             for i in range(0,3):
-                id =mealplan["week"][days]["meals"][i]["id"]
-                food =mealplan["week"][days]["meals"][i]["title"]
-                link =mealplan["week"][days]["meals"][i]["sourceUrl"]
+                id =plan["week"][days]["meals"][i]["id"]
+                food =plan["week"][days]["meals"][i]["title"]
+                link =plan["week"][days]["meals"][i]["sourceUrl"]
                 meal_ids.append(id)
                 meal_names.append(food)
                 source.append(link)
